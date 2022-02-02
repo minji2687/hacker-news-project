@@ -17,7 +17,7 @@ const CommentAdditionalInfo = styled.div`
   padding: 12px;
   box-sizing: border-box;
 `;
-const UserInfo = styled.div`
+export const UserInfo = styled.div`
   display: flex;
   align-items: center;
   img {
@@ -26,11 +26,11 @@ const UserInfo = styled.div`
     border: 0.1px solid rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     background: #fff;
+    margin-right: 10px;
   }
 `;
 
-const UserName = styled.div`
-  margin-left: 10px;
+export const UserName = styled.div`
   color: rgba(0, 0, 0, 0.6);
 `;
 

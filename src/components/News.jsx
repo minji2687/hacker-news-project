@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "./card/Card";
 import styled from "@emotion/styled";
 
 const CardList = styled.div`

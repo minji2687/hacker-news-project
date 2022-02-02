@@ -3,6 +3,8 @@ import Home from "./components/Home";
 import Layout from "./components/layout/Layout";
 import News from "./containers/NewsContainer";
 import Ask from "./pages/Ask";
+import Job from "./pages/Job";
+import Show from "./pages/Show";
 
 function App() {
   return (
@@ -11,9 +13,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<News />} />
-          <Route path="/show" element={<Home />} />
+          <Route path="/show" element={<Show />} />
           <Route path="/ask" element={<Ask />} />
-          <Route path="/jobs" element={<Home />} />
+          <Route path="/jobs" element={<Job />} />
         </Routes>
       </Layout>
     </BrowserRouter>
