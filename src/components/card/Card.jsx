@@ -90,25 +90,22 @@ export const CommentNum = styled.div`
   }
 `;
 
-export default function Card() {
+export default function Card({ data }) {
   return (
     <CardWrap>
       <CardInfo>
         <Ranking>1</Ranking>
-        <Writer>JamesKim</Writer>
+        <Writer>{data.by}</Writer>
         <CreatedDate>1 min ago</CreatedDate>
       </CardInfo>
       <CardDoc>
-        <Title>
-          Is there anywhere to buy a Raspberry Pi 3 or 4 at a “normal” price now
-          buy a Pi
-        </Title>
+        <Title>{data.title}</Title>
         <AdditionalInfo>
           <PointNum>
-            <span>9d444d7</span>
+            <span>{data.score}</span>
           </PointNum>
           <CommentNum>
-            <span>10dfdf0</span>
+            <span>10</span>
           </CommentNum>
         </AdditionalInfo>
       </CardDoc>

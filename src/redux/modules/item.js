@@ -25,7 +25,11 @@ import axios from "axios";
 // }
 
 export function requestItem(IDdata) {
-  return IDdata.map((id) =>
+  let startItemNum = 0;
+  let endItemNum = 10;
+  let sliceIDItem = IDdata.slice(startItemNum, endItemNum);
+
+  return sliceIDItem.map((id) =>
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
   );
 }

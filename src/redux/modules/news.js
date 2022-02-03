@@ -1,14 +1,14 @@
-import { call, put, delay, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
 import { getItemSagaStart, requestItem } from "./item";
 
-export const GET_NEWS_START = "redux-start/users/GET_NEWS_START";
+export const GET_NEWS_START = "redux-start/news/GET_NEWS_START";
 
 //깃헙 API 호출에 대한 응답이 응답이 성공적으로 돌아온 경우
-export const GET_NEWS_SUCCESS = "redux-start/users/GET_NEWS_SUCCESS";
+export const GET_NEWS_SUCCESS = "redux-start/news/GET_NEWS_SUCCESS";
 
 //깃헙 API 호출에 대한 응답이 응답이 실패한 경우
-export const GET_NEWS_FAIL = "redux-start/users/GET_NEWS_FAIL";
+export const GET_NEWS_FAIL = "redux-start/news/GET_NEWS_FAIL";
 
 // 액션 생성 함수
 export function getNewsStart() {
@@ -17,10 +17,10 @@ export function getNewsStart() {
   };
 }
 
-export function getNewsSuccess(data) {
+export function getNewsSuccess(newsData) {
   return {
     type: GET_NEWS_SUCCESS,
-    data,
+    newsData,
   };
 }
 export function getNewsFail(error) {
@@ -36,7 +36,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  switch (state.type) {
+  switch (action.type) {
     case GET_NEWS_START:
       return {
         ...state,
@@ -48,7 +48,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        data: action.data,
+        newsData: action.newsData,
       };
 
     case GET_NEWS_FAIL:
@@ -65,7 +65,7 @@ export default function reducer(state = initialState, action) {
 
 //saga
 
-const GET_USERS_SAGA_START = "GET_USERS_SAGA_START";
+const GET_NEWS_SAGA_START = "GET_NEWS_SAGA_START";
 
 function* getNewsSaga(action) {
   try {
@@ -78,13 +78,10 @@ function* getNewsSaga(action) {
 
     const promiseArr = yield requestItem(res.data);
 
-    const newData = yield call(axios.all, promiseArr);
+    const newsData = yield call(axios.all, promiseArr);
+    // console.log(newsData);
 
-    console.log("newData", newData);
-
-    yield put(getNewsSuccess(newData));
-
-    // yield put(push("/"));
+    yield put(getNewsSuccess(newsData));
   } catch (error) {
     yield put(getNewsFail(error));
   }
@@ -92,10 +89,10 @@ function* getNewsSaga(action) {
 
 export function getNewsSagaStart() {
   return {
-    type: GET_USERS_SAGA_START,
+    type: GET_NEWS_SAGA_START,
   };
 }
 
 export function* newsSaga() {
-  yield takeEvery(GET_USERS_SAGA_START, getNewsSaga);
+  yield takeEvery(GET_NEWS_SAGA_START, getNewsSaga);
 }

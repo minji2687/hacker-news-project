@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import SubTitle from "./SubTitle";
 import newsMainBanner from "../assets/newsMainBanner.svg";
 import MainBanner from "./MainBanner";
+import MainContentWrap from "./MainContentWrap";
 
 const CardList = styled.div`
   display: flex;
@@ -12,14 +13,16 @@ const CardList = styled.div`
   padding: 16px 4%;
 `;
 
-export default function News() {
+export default function News({ newsData }) {
   return (
-    <>
+    <MainContentWrap>
       <MainBanner background={newsMainBanner} />
       <CardList>
         <SubTitle>TOP 10</SubTitle>
-        <Card />
+        {newsData.map((item) => (
+          <Card data={item.data} />
+        ))}
       </CardList>
-    </>
+    </MainContentWrap>
   );
 }
