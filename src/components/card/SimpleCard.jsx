@@ -4,7 +4,7 @@ import { CardWrap, CardInfo, CreatedDate, Ranking, Title } from "./Card";
 export const SimpleCardWrap = styled(CardWrap)`
   width: ${({ shape }) => (shape === "list" ? "92%" : "43%")};
   height: ${({ shape }) => (shape === "list" ? "91px" : "177px")};
-  padding: ${({ shape }) => (shape === "list" ? "10px" : "14px")};
+  padding: ${({ shape }) => (shape === "list" ? "9px" : "14px")};
   display: flex;
   flex-direction: ${({ shape }) =>
     shape === "list" ? "row-reverse" : "column"};
@@ -18,8 +18,9 @@ export const SimpleCardInfo = styled(CardInfo)`
 `;
 
 export const SimpleCardTitle = styled(Title)`
-  -webkit-line-clamp: ${({ shape }) => (shape === "list" ? 2 : 4)};
+  -webkit-line-clamp: ${({ shape }) => (shape === "list" ? 3 : 4)};
   width: ${({ shape }) => (shape === "list" ? "70%" : "100%")};
+  height: 73px;
 `;
 
 export const SimpleCardCreatedDate = styled(CreatedDate)`

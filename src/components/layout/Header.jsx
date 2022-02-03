@@ -9,6 +9,7 @@ const HeaderWrap = styled.header`
   height: 74px;
   padding: 0 18px;
   background: #656565;
+  border-bottom: 2px solid #eeeeee;
 `;
 
 const Logo = styled.h1`

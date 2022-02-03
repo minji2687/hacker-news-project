@@ -12,6 +12,8 @@ const NavWrap = styled.nav`
   height: 83px;
   display: flex;
   justify-content: center;
+  position: fixed;
+  bottom: 0;
 `;
 
 const Nav = styled.ul`

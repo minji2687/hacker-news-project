@@ -15,8 +15,8 @@ const CommentAdditionalInfo = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px;
-  box-sizing: border-box;
 `;
+
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;

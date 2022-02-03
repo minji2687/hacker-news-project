@@ -3,7 +3,7 @@ import pointIcon from "../../assets/point.svg";
 import commentIcon from "../../assets/comment.svg";
 
 export const CardWrap = styled.div`
-  width: 92%;
+  width: 100%;
   height: 140px;
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -11,7 +11,6 @@ export const CardWrap = styled.div`
   border-radius: 10px;
   background: #fff;
   margin-bottom: 16px;
-  box-sizing: border-box;
 `;
 
 export const CardInfo = styled.div`
@@ -49,12 +48,12 @@ export const CardDoc = styled.div`
 
 export const Title = styled.h3`
   font-size: 18px;
-  margin-bottom: 7.8px;
+  margin-bottom: 7.5px;
   line-height: 138.19%;
   // 말줄임
   display: -webkit-box;
   word-wrap: break-word;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,7 +63,6 @@ export const AdditionalInfo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 11px;
   height: 30px;
   color: rgba(0, 0, 0, 0.6);
 `;
