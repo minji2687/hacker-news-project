@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
 const MainBannerWrap = styled.div`
-  width: 100%;
   // border-bottom: 1px solid #eeeeee;
+  img {
+    width: 100%;
+  }
 `;
 
 export default function MainBanner({ background }) {

@@ -8,6 +8,7 @@ import newsImg from "../../assets/news.svg";
 import homeImg from "../../assets/home.svg";
 
 const NavWrap = styled.nav`
+  width: 100%;
   background: #ffc700;
   height: 83px;
   display: flex;
