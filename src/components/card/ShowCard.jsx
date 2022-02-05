@@ -10,7 +10,7 @@ import {
 } from "./Card";
 import profile from "../../assets/profile.svg";
 
-import { UserInfo, UserName } from "../Ask";
+import { UserInfo, UserName } from "../Comment";
 
 const ShowCardWrap = styled(CardWrap)`
   height: 106px;
@@ -27,6 +27,10 @@ const ShowUserInfo = styled(UserInfo)`
   }
 `;
 
+const ShowCardInfo = styled(CardInfo)`
+  width: auto;
+`;
+
 const ShowUserName = styled(UserName)`
   color: rgba(0, 0, 0, 0.6);
   opacity: 0.5;
@@ -35,6 +39,7 @@ const ShowUserName = styled(UserName)`
 const ShowTitle = styled(Title)`
   font-size: 14px;
   line-height: 138.19%;
+  -webkit-line-clamp: 2;
 `;
 
 const ShowAdditionalInfo = styled(AdditionalInfo)`
@@ -51,20 +56,17 @@ const ShowCommentNum = styled(CommentNum)`
   background-size: 23px;
 `;
 
-export default function ShowCard() {
+export default function ShowCard({ data }) {
   return (
     <ShowCardWrap>
-      <CardInfo>
+      <ShowCardInfo>
         <ShowUserInfo>
           <img src={profile} alt="profile" />
           <ShowUserName>linsomniac</ShowUserName>
         </ShowUserInfo>
-      </CardInfo>
+      </ShowCardInfo>
       <CardDoc>
-        <ShowTitle>
-          Is there anywhere to buy a Raspberry Pi 3 or 4 at a “normal” price now
-          buy a Pi ...
-        </ShowTitle>
+        <ShowTitle>{data.title}</ShowTitle>
         <ShowAdditionalInfo>
           <ShowPointNum>
             <span>97</span>

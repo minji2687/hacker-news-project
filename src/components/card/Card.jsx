@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import pointIcon from "../../assets/point.svg";
 import commentIcon from "../../assets/comment.svg";
+import { Link } from "react-router-dom";
 
 export const CardWrap = styled.div`
   width: 100%;
@@ -44,6 +45,7 @@ export const CardDoc = styled.div`
   margin-left: 17px;
   padding-top: 18px;
   position: relative;
+  width: 70%;
 `;
 
 export const Title = styled.h3`
@@ -99,7 +101,11 @@ export default function Card({ data }) {
         <CreatedDate>1 min ago</CreatedDate>
       </CardInfo>
       <CardDoc>
-        <Title>{data.title}</Title>
+        <Title>
+          <Link to={`/ask/${data.id}`} key={data.id}>
+            {data.title}
+          </Link>
+        </Title>
         <AdditionalInfo>
           <PointNum>
             <span>{data.score}</span>

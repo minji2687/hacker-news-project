@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
-import { requestItem } from "./item";
+import { requestItems } from "./item";
 
 export const GET_SHOW_START = "redux-start/show/GET_SHOW_START";
 
@@ -76,7 +76,7 @@ function* getShowSaga(action) {
       "https://hacker-news.firebaseio.com/v0/showstories.json"
     );
 
-    const promiseArr = yield requestItem(res.data);
+    const promiseArr = yield requestItems(res.data);
 
     const showData = yield call(axios.all, promiseArr);
     console.log("showData", showData);

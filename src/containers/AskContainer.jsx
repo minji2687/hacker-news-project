@@ -1,5 +1,7 @@
 import Ask from "../components/Ask";
+import { useSelector } from "react-redux";
 
 export default function AskContainer() {
-  return <Ask />;
+  const askData = useSelector((state) => state.ask.askData);
+  return <Ask askData={askData} />;
 }

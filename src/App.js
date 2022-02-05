@@ -5,6 +5,7 @@ import Ask from "./pages/Ask";
 import Job from "./pages/Job";
 import Show from "./pages/Show";
 import Home from "./pages/Home";
+import AskDetailContainer from "./containers/AskDetailContainer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/show" element={<Show />} />
           <Route path="/ask" element={<Ask />} />
+          <Route path="/ask/:askId" element={<AskDetailContainer />} />
           <Route path="/jobs" element={<Job />} />
         </Routes>
       </Layout>

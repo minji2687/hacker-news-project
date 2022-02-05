@@ -24,12 +24,23 @@ import axios from "axios";
 //   yield takeEvery(GET_ITEM_SAGA_START, requestItems);
 // }
 
-export function requestItem(IDdata) {
-  let startItemNum = 0;
-  let endItemNum = 10;
-  let sliceIDItem = IDdata.slice(startItemNum, endItemNum);
+export function requestItems(IDdataArr) {
+  let startItemNum;
+  let endItemNum;
+  let IDItem;
+  if (IDdataArr.length > 10) {
+    startItemNum = 0;
+    endItemNum = 10;
+    IDItem = IDdataArr.slice(startItemNum, endItemNum);
+  } else {
+    IDItem = IDdataArr;
+  }
 
-  return sliceIDItem.map((id) =>
+  return IDItem.map((id) =>
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
   );
+}
+
+export function requestItem(id) {
+  return axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
 }

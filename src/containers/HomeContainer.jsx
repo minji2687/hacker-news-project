@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getNewsSagaStart } from "../redux/modules/news";
 import { getShowSagaStart } from "../redux/modules/show";
+import { getAskSagaStart } from "../redux/modules/ask";
 import Home from "../components/Home";
 
 export default function HomeContainer() {
@@ -10,6 +11,7 @@ export default function HomeContainer() {
   useEffect(() => {
     dispatch(getNewsSagaStart());
     dispatch(getShowSagaStart());
+    dispatch(getAskSagaStart());
   }, []);
 
   return <Home />;
