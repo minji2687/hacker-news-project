@@ -3,9 +3,10 @@ import profile from "../assets/profile.svg";
 import replyArrow from "../assets/replyArrow.svg";
 
 const CommentWrap = styled.div`
-  margin: 10px 20px;
+  margin: 10px 0;
   border-radius: 10px;
   overflow: hidden;
+  background: #fff;
 `;
 
 const CommentAdditionalInfo = styled.div`
@@ -42,7 +43,7 @@ const CommentedDate = styled.span`
 `;
 
 const CommnetContents = styled.div`
-  padding: 10px 11px;
+  padding: 10px 12px;
   font-size: 16px;
   line-height: 138.19%;
 `;

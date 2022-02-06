@@ -27,7 +27,6 @@ export default function AskDetailContainer() {
         })
       );
       data.comments = commentsArr;
-      console.log(data);
       return data;
     }
 

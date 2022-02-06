@@ -48,6 +48,7 @@ export const CardDoc = styled.div`
 `;
 
 export const Title = styled.h3`
+  min-height: 75px;
   font-size: 18px;
   margin-bottom: 7.5px;
   line-height: 138.19%;

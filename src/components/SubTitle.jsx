@@ -10,7 +10,7 @@ const SubtitleWrap = styled.div`
   font-size: 18px;
   line-height: 138.19%;
   padding: 3px 30px;
-  margin-bottom: 20px;
+  margin: 16px 4% 0;
 `;
 
 export default function SubTitle({ children }) {

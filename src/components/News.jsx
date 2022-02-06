@@ -9,8 +9,8 @@ export default function News({ newsData }) {
   return (
     <MainContentWrap>
       <MainBanner background={newsMainBanner} />
+      <SubTitle>TOP 10</SubTitle>
       <CardList>
-        <SubTitle>TOP 10</SubTitle>
         {newsData.map((item) => (
           <Card data={item.data} key={item.data.id} />
         ))}
