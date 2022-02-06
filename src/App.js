@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import News from "./containers/NewsContainer";
 import Ask from "./pages/Ask";
-import Job from "./pages/Job";
+import Jobs from "./pages/Jobs";
 import Show from "./pages/Show";
 import Home from "./pages/Home";
 import AskDetailContainer from "./containers/AskDetailContainer";
@@ -17,7 +17,7 @@ function App() {
           <Route path="/show" element={<Show />} />
           <Route path="/ask" element={<Ask />} />
           <Route path="/ask/:askId" element={<AskDetailContainer />} />
-          <Route path="/jobs" element={<Job />} />
+          <Route path="/jobs" element={<Jobs />} />
         </Routes>
       </Layout>
     </BrowserRouter>

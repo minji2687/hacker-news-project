@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import pointIcon from "../../assets/point.svg";
-import commentIcon from "../../assets/comment.svg";
 import { Link } from "react-router-dom";
+import CardAdditionalInfo from "./CardAdditionalInfo";
 
 export const CardWrap = styled.div`
   width: 100%;
@@ -52,44 +51,12 @@ export const Title = styled.h3`
   font-size: 18px;
   margin-bottom: 7.5px;
   line-height: 138.19%;
-  // 말줄임
   display: -webkit-box;
   word-wrap: break-word;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
-
-export const AdditionalInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30px;
-  color: rgba(0, 0, 0, 0.6);
-`;
-
-export const PointNum = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 7px;
-  padding-left: 35px;
-  background: url(${pointIcon}) no-repeat left;
-  min-height: 24px;
-  span {
-    padding-top: 3px;
-  }
-`;
-
-export const CommentNum = styled.div`
-  display: flex;
-  align-items: center;
-  background: url(${commentIcon}) no-repeat left;
-  min-height: 24px;
-  padding-left: 31px;
-  span {
-    padding-top: 3px;
-  }
 `;
 
 export default function Card({ data }) {
@@ -106,14 +73,7 @@ export default function Card({ data }) {
             {data.title}
           </Link>
         </Title>
-        <AdditionalInfo>
-          <PointNum>
-            <span>{data.score}</span>
-          </PointNum>
-          <CommentNum>
-            <span>10</span>
-          </CommentNum>
-        </AdditionalInfo>
+        <CardAdditionalInfo score={data.score} />
       </CardDoc>
     </CardWrap>
   );

@@ -1,24 +1,17 @@
 import styled from "@emotion/styled";
-import {
-  CardWrap,
-  CardInfo,
-  CardDoc,
-  Title,
-  AdditionalInfo,
-  PointNum,
-  CommentNum,
-} from "./Card";
+import { CardWrap, CardInfo, CardDoc, Title } from "./Card";
 import profile from "../../assets/profile.svg";
 
 import { UserInfo, UserName } from "../Comment";
+import { AdditionalInfo, PointNum, CommentNum } from "./CardAdditionalInfo";
 
-const ShowCardWrap = styled(CardWrap)`
+export const ShowCardWrap = styled(CardWrap)`
   height: 106px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
 `;
 
-const ShowUserInfo = styled(UserInfo)`
+export const ShowUserInfo = styled(UserInfo)`
   flex-direction: column;
   img {
     height: 30px;
@@ -27,33 +20,35 @@ const ShowUserInfo = styled(UserInfo)`
   }
 `;
 
-const ShowCardInfo = styled(CardInfo)`
+export const ShowCardInfo = styled(CardInfo)`
   width: auto;
 `;
 
-const ShowUserName = styled(UserName)`
+export const ShowUserName = styled(UserName)`
   color: rgba(0, 0, 0, 0.6);
   opacity: 0.5;
 `;
 
-const ShowTitle = styled(Title)`
+export const ShowTitle = styled(Title)`
   font-size: 14px;
   line-height: 138.19%;
   -webkit-line-clamp: 2;
 `;
 
-const ShowAdditionalInfo = styled(AdditionalInfo)`
+export const ShowAdditionalInfo = styled(AdditionalInfo)`
   justify-content: start;
   margin-left: -2px;
 `;
 
-const ShowPointNum = styled(PointNum)`
+export const ShowPointNum = styled(PointNum)`
   background-size: 23px;
   padding-left: 28px;
+  font-size: 11.6471px;
 `;
 
-const ShowCommentNum = styled(CommentNum)`
+export const ShowCommentNum = styled(CommentNum)`
   background-size: 23px;
+  font-size: 11.6471px;
 `;
 
 export default function ShowCard({ data }) {
