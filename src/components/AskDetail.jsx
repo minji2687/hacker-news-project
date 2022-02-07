@@ -55,7 +55,10 @@ const CommentDivision = styled.div`
   font-style: italic;
   font-weight: 600;
   font-size: 18px;
+  margin-bottom: 10px;
 `;
+
+const CommentList = styled.div``;
 
 export default function AskDetail({ askCommnetsData, askDetailData }) {
   console.log("askCommnetsData", askCommnetsData);
@@ -70,13 +73,12 @@ export default function AskDetail({ askCommnetsData, askDetailData }) {
       <AskTitle>{askDetailData.title}</AskTitle>
       <AskContents>{askDetailData.text}</AskContents>
       <CommentDivision>comment</CommentDivision>
-      {/* <CardList> */}
-      {askCommnetsData &&
-        askCommnetsData.map((commnet) => {
-          console.log(commnet);
-          return <Comment commnet={commnet} key={commnet.id} />;
-        })}
-      {/* </CardList> */}
+      <CommentList>
+        {askCommnetsData &&
+          askCommnetsData.map((comment) => {
+            return <Comment reply={false} comment={comment} key={comment.id} />;
+          })}
+      </CommentList>
     </AskDetailWrap>
   );
 }

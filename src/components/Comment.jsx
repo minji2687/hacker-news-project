@@ -1,12 +1,21 @@
 import styled from "@emotion/styled";
 import profile from "../assets/profile.svg";
+import commentArrow from "../assets/commentArrow.svg";
 import replyArrow from "../assets/replyArrow.svg";
+import { useState } from "react";
+import { useEffect } from "react";
 
+const CommentContainer = styled.div`
+  display: flex;
+  align-items: start;
+  img {
+    margin: 5px 5px 0 0;
+  }
+`;
 const CommentWrap = styled.div`
-  margin: 10px 0;
+  // margin-bottom: 10px;
   border-radius: 10px;
   overflow: hidden;
-  background: #fff;
 `;
 
 const CommentAdditionalInfo = styled.div`
@@ -46,28 +55,45 @@ const CommnetContents = styled.div`
   padding: 10px 12px;
   font-size: 16px;
   line-height: 138.19%;
+  background: #fff;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 10px;
 `;
 
-export default function Comment({ askData }) {
+export default function Comment({ comment, reply }) {
+  const [replyComment, setReplyComment] = useState([]);
+  useEffect(() => {
+    comment.comments && comment.comments.then((res) => setReplyComment(res));
+  }, []);
+
   return (
-    <CommentWrap>
-      <CommentAdditionalInfo>
-        <UserInfo>
-          <img src={profile} alt="profile" />
-          <UserName>linsomniac</UserName>
-        </UserInfo>
-        <div>
-          <CommentedDate>a day ago</CommentedDate>
-          <img src={replyArrow} alt="댓글닫기" />
-        </div>
-      </CommentAdditionalInfo>
-      <CommnetContents>
-        As someone who, over the last year, has gone from sedentary, in front of
-        the computer lifestyle, to jogging 5K 3 times a week on the treadmill
-        and getting 10K steps per day half the days in the last month... My wife
-        and I both feel 20 years younger. The change brought on through a number
-        of lifestyle changes has been dramatic and basically entirely positive.
-      </CommnetContents>
-    </CommentWrap>
+    <CommentContainer>
+      {reply && <img src={replyArrow} alt="대댓글 표시" />}
+      <CommentWrap>
+        <CommentAdditionalInfo>
+          <UserInfo>
+            <img src={profile} alt="profile" />
+            <UserName>linsomniac</UserName>
+          </UserInfo>
+          <div>
+            <CommentedDate>a day ago</CommentedDate>
+            <img src={commentArrow} alt="댓글닫기" />
+          </div>
+        </CommentAdditionalInfo>
+        <CommnetContents>
+          As someone who, over the last year, has gone from sedentary, in front
+          of the computer lifestyle, to jogging 5K 3 times a week on the
+          treadmill and getting 10K steps per day half the days in the last
+          month... My wife and I both feel 20 years younger. The change brought
+          on through a number of lifestyle changes has been dramatic and
+          basically entirely positive.
+        </CommnetContents>
+
+        {replyComment &&
+          replyComment.map((comment) => {
+            return <Comment reply={true} comment={comment} />;
+          })}
+      </CommentWrap>
+    </CommentContainer>
   );
 }

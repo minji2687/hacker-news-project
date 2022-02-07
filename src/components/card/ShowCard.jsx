@@ -33,6 +33,7 @@ export const ShowTitle = styled(Title)`
   font-size: 14px;
   line-height: 138.19%;
   -webkit-line-clamp: 2;
+  min-height: auto;
 `;
 
 export const ShowAdditionalInfo = styled(AdditionalInfo)`
