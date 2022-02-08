@@ -34,7 +34,7 @@ export default function SquareCard({ data }) {
         </Link>
       </SquareCardTitle>
       <SquareCardWriter>idforstmeier</SquareCardWriter>
-      <CardAdditionalInfo score={data.score} />
+      <CardAdditionalInfo scoreNum={data.score} commentNum={data.descendants} />
     </SquareCardWrap>
   );
 }

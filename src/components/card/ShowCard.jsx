@@ -21,7 +21,7 @@ export const ShowUserInfo = styled(UserInfo)`
 `;
 
 export const ShowCardInfo = styled(CardInfo)`
-  width: auto;
+  width: 21%;
 `;
 
 export const ShowUserName = styled(UserName)`
@@ -59,17 +59,17 @@ export default function ShowCard({ data, clickModal }) {
       <ShowCardInfo>
         <ShowUserInfo>
           <img src={profile} alt="profile" />
-          <ShowUserName>linsomniac</ShowUserName>
+          <ShowUserName>{data.by}</ShowUserName>
         </ShowUserInfo>
       </ShowCardInfo>
       <CardDoc>
         <ShowTitle>{data.title}</ShowTitle>
         <ShowAdditionalInfo>
           <ShowPointNum>
-            <span>97</span>
+            <span>{data.score}</span>
           </ShowPointNum>
           <ShowCommentNum onClick={() => clickModal(data)}>
-            <span>100</span>
+            <span>{data.descendants}</span>
           </ShowCommentNum>
         </ShowAdditionalInfo>
       </CardDoc>

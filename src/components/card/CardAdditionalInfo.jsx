@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import pointIcon from "../../assets/point.svg";
 import commentIcon from "../../assets/comment.svg";
 import whiteCommentIcon from "../../assets/whiteCommentIcon.svg";
-import { Link } from "react-router-dom";
 
 export const AdditionalInfo = styled.div`
   display: flex;
@@ -38,14 +37,14 @@ export const CommentNum = styled.div`
   }
 `;
 
-export default function CardAdditionalInfo({ score, ID, modal }) {
+export default function CardAdditionalInfo({ scoreNum, commentNum, modal }) {
   return (
     <AdditionalInfo>
       <PointNum modal={modal}>
-        <span>{score}</span>
+        <span>{scoreNum}</span>
       </PointNum>
       <CommentNum modal={modal}>
-        <span>10</span>
+        <span>{commentNum}</span>
       </CommentNum>
     </AdditionalInfo>
   );

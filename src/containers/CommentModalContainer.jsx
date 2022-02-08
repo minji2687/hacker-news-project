@@ -3,10 +3,15 @@ import { useEffect, useState } from "react";
 import CommentModal from "../components/CommentModal";
 import { requestItems } from "../redux/modules/item";
 
-export default function CommentModalContainer({ showItemData, closeModal }) {
+export default function CommentModalContainer({
+  itemData,
+  closeModal,
+  openModal,
+}) {
   const [commentsData, setCommentsData] = useState(null);
 
   useEffect(() => {
+    console.log("itemData", itemData);
     function fetchComments(data) {
       if (!data.kids) {
         return data;
@@ -21,21 +26,22 @@ export default function CommentModalContainer({ showItemData, closeModal }) {
     }
 
     async function fetchData() {
-      await fetchComments(showItemData);
-      showItemData.comments &&
-        showItemData.comments.then((res) => {
+      await fetchComments(itemData);
+      itemData.comments &&
+        itemData.comments.then((res) => {
           setCommentsData(res);
         });
     }
 
-    fetchData();
-  }, []);
+    itemData && fetchData();
+  }, [itemData]);
 
   return (
     <CommentModal
-      showItemData={showItemData}
+      itemData={itemData}
       commentsData={commentsData}
       closeModal={closeModal}
+      openModal={openModal}
     />
   );
 }

@@ -42,12 +42,12 @@ export default function Show({ showData }) {
           );
         })}
       </CardList>
-      {openModal && (
-        <CommentModalContainer
-          showItemData={modalData}
-          closeModal={closeModal}
-        />
-      )}
+
+      <CommentModalContainer
+        itemData={modalData}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
     </MainContentWrap>
   );
 }

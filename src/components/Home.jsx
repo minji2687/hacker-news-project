@@ -53,8 +53,8 @@ export default function Home({
       <HomeSubTitle>TOP</HomeSubTitle>
       <HorizontalCardList>
         <HorizontalCardListInnerWrap>
-          {topData.map(({ data }) => {
-            return <TopCard data={data} key={data.id} />;
+          {topData.map(({ data }, index) => {
+            return <TopCard data={data} key={data.id} ranking={index + 1} />;
           })}
         </HorizontalCardListInnerWrap>
       </HorizontalCardList>

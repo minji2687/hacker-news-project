@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import avata from "../../assets/avata1.svg";
 
 const RankerCardWrap = styled.div`
   width: 168px;
@@ -12,6 +13,20 @@ const RankerCardWrap = styled.div`
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   background: #fff;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: url(${avata}) no-repeat center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.5;
+  }
 `;
 const UserID = styled.strong``;
 

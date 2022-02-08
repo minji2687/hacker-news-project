@@ -33,18 +33,16 @@ const ShowHomeCreatedDate = styled(CreatedDate)`
   margin-bottom: 8px;
 `;
 
-export default function ShowHomeCard() {
+export default function ShowHomeCard({ data }) {
   return (
     <ShowHomeCardWrap>
       <ShowHomeCreatedDate>3 min ago</ShowHomeCreatedDate>
-      <ShowHomeTitle>
-        Shoot the neural network before it shoots you{" "}
-      </ShowHomeTitle>
+      <ShowHomeTitle>{data.title}</ShowHomeTitle>
       <ShowHomeUserInfo>
         <img src={profile} alt="profile" />
-        <ShowUserName>linsomniac</ShowUserName>
+        <ShowUserName>{data.by}</ShowUserName>
       </ShowHomeUserInfo>
-      <CardAdditionalInfo />
+      <CardAdditionalInfo scoreNum={data.score} commentNum={data.descendants} />
     </ShowHomeCardWrap>
   );
 }

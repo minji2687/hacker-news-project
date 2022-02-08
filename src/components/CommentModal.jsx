@@ -4,7 +4,6 @@ import { UserID } from "./card/MiddleBigCard";
 import CardAdditionalInfo from "./card/CardAdditionalInfo";
 import Comment from "./Comment";
 import modalClose from "../assets/modalClose.svg";
-import { useLayoutEffect, useState } from "react";
 
 const CommentModalWrap = styled.div`
   background: #ededed;
@@ -13,7 +12,8 @@ const CommentModalWrap = styled.div`
   height: 100%;
   position: fixed;
   z-index: 2;
-  top: 0;
+  top: ${({ openModal }) => (openModal ? 0 : "100%")};
+  transition: top 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s;
 `;
 
 const CommentTitle = styled.div`
@@ -49,21 +49,21 @@ const ModalCloseBtn = styled.div`
 `;
 
 export default function CommentModal({
-  showItemData,
+  itemData,
   commentsData,
   closeModal,
+  openModal,
 }) {
   return (
-    <CommentModalWrap>
+    <CommentModalWrap openModal={openModal}>
       <ModalCloseBtn onClick={closeModal}>
         <img src={modalClose} alt="모달 닫기 버튼" />
       </ModalCloseBtn>
-      <CommentTitle>
-        Daily Step Count and All-Cause Mortality: A Dose-Response Meta-analysis
-      </CommentTitle>
+      {/* <CommentTitle>fdjkslfjksldjfs</CommentTitle> */}
+      <CommentTitle>{itemData && itemData.title}</CommentTitle>
       <CommentInfo>
         <CardAdditionalInfo modal={true} />
-        <CommentUserID>fdsf</CommentUserID>
+        <CommentUserID>{itemData && itemData.by}</CommentUserID>
         <AskCreatedDate>2 days ago</AskCreatedDate>
       </CommentInfo>
       <CommentList>

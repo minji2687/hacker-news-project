@@ -74,7 +74,10 @@ export default function Card({ data }) {
             {data.title}
           </Link>
         </Title>
-        <CardAdditionalInfo score={data.score} />
+        <CardAdditionalInfo
+          scoreNum={data.score}
+          commentNum={data.descendants}
+        />
       </CardDoc>
     </CardWrap>
   );

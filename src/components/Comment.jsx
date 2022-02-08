@@ -73,22 +73,14 @@ export default function Comment({ comment, reply }) {
         <CommentAdditionalInfo>
           <UserInfo>
             <img src={profile} alt="profile" />
-            <UserName>linsomniac</UserName>
+            <UserName>{comment.by}</UserName>
           </UserInfo>
           <div>
             <CommentedDate>a day ago</CommentedDate>
             <img src={commentArrow} alt="댓글닫기" />
           </div>
         </CommentAdditionalInfo>
-        <CommnetContents>
-          As someone who, over the last year, has gone from sedentary, in front
-          of the computer lifestyle, to jogging 5K 3 times a week on the
-          treadmill and getting 10K steps per day half the days in the last
-          month... My wife and I both feel 20 years younger. The change brought
-          on through a number of lifestyle changes has been dramatic and
-          basically entirely positive.
-        </CommnetContents>
-
+        <CommnetContents>{comment.text}</CommnetContents>
         {replyComment &&
           replyComment.map((comment) => {
             return <Comment reply={true} comment={comment} key={comment.id} />;

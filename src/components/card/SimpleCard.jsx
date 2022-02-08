@@ -2,11 +2,14 @@ import styled from "@emotion/styled";
 import { CardWrap, CardInfo, CreatedDate, Ranking, Title } from "./Card";
 
 export const SimpleCardWrap = styled(CardWrap)`
-  width: ${({ shape }) => (shape === "list" ? "100%" : "43%")};
+  width: ${({ shape }) => (shape === "list" ? "100%" : "48%")};
   height: ${({ shape }) => (shape === "list" ? "auto" : "177px")};
   padding: ${({ shape }) => (shape === "list" ? "9px" : "14px")};
+  min-width: ${({ shape }) => (shape === "list" ? "100%" : "48%")};
+
   display: flex;
   flex-direction: column;
+
   & > div {
     display: flex;
     flex-direction: ${({ shape }) =>

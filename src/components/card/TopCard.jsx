@@ -3,22 +3,27 @@ import { Title, CardWrap, CreatedDate } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 
 const TopCardWrap = styled(CardWrap)`
-  flex-direction: column;
   width: 322px;
   height: 297px;
-  padding: 25px 12px 0 12px;
   border: 1px solid #000000;
   position: relative;
   overflow: hidden;
+`;
+const CardInfo = styled.div`
+  z-index: 1;
+  flex-direction: column;
+  padding: 25px 12px 0 12px;
 `;
 
 const TopTitle = styled(Title)`
   text-align: center;
   margin-bottom: 31px;
   font-size: 20px;
+  line-height: 162.19%;
 `;
 
 const TopCreatedDate = styled(CreatedDate)`
+  display: block;
   text-align: right;
   margin-bottom: 29px;
   font-weight: 600;
@@ -38,15 +43,34 @@ const IdSection = styled.div`
   align-items: center;
   color: #fff;
 `;
-export default function TopCard({ data }) {
+
+const BackgroundNum = styled.div`
+  text-align: right;
+  letter-spacing: -0.01em;
+  color: #fff4cc;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  font-size: 144px;
+  width: 100%;
+  position: absolute;
+  text-align: left;
+  padding-left: 19px;
+  z-index: 0;
+`;
+
+export default function TopCard({ data, ranking }) {
   return (
     <TopCardWrap>
-      <TopCreatedDate>1 min ago</TopCreatedDate>
-      <TopTitle>
-        Huginn: System for building agents that perform automated tasks online
-      </TopTitle>
-      <CardAdditionalInfo />
-      <IdSection>idmyd</IdSection>
+      <BackgroundNum>{ranking}</BackgroundNum>
+      <CardInfo>
+        <TopCreatedDate>1 min ago</TopCreatedDate>
+        <TopTitle>{data.title}</TopTitle>
+        <CardAdditionalInfo
+          scoreNum={data.score}
+          commentNum={data.descendants}
+        />
+        <IdSection>{data.by}</IdSection>
+      </CardInfo>
     </TopCardWrap>
   );
 }

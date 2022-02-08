@@ -39,17 +39,18 @@ export const MiddleCardTitle = styled.h3`
 export const UserID = styled.div`
   color: rgba(0, 0, 0, 0.6);
 `;
-export default function MiddleBigCard() {
+export default function MiddleBigCard({ data }) {
   return (
     <MiddleBigCardWrap>
       <CardPicture picture={MiddlebigCardPicture} />
       <MiddleCardInfo>
-        <MiddleCardTitle>
-          Let's Block It – Custom uBlock Origin Filters Made Easy
-        </MiddleCardTitle>
+        <MiddleCardTitle>{data.title}</MiddleCardTitle>
         <div>
-          <UserID>ididxvello</UserID>
-          <CardAdditionalInfo />
+          <UserID>{data.by}</UserID>
+          <CardAdditionalInfo
+            scoreNum={data.score}
+            commentNum={data.descendants}
+          />
         </div>
       </MiddleCardInfo>
     </MiddleBigCardWrap>
