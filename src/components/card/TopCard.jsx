@@ -38,7 +38,7 @@ const IdSection = styled.div`
   align-items: center;
   color: #fff;
 `;
-export default function TopCard() {
+export default function TopCard({ data }) {
   return (
     <TopCardWrap>
       <TopCreatedDate>1 min ago</TopCreatedDate>

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getNewsSagaStart } from "../redux/modules/news";
 import { getShowSagaStart } from "../redux/modules/show";
 import { getAskSagaStart } from "../redux/modules/ask";
 import { getJobsSagaStart } from "../redux/modules/jobs";
+import { getTopSagaStart } from "../redux/modules/top";
 import Home from "../components/Home";
 
 export default function HomeContainer() {
@@ -14,7 +15,22 @@ export default function HomeContainer() {
     dispatch(getShowSagaStart());
     dispatch(getAskSagaStart());
     dispatch(getJobsSagaStart());
+    dispatch(getTopSagaStart());
   }, []);
 
-  return <Home />;
+  const topData = useSelector((state) => state.top.topData);
+  const newsData = useSelector((state) => state.news.newsData);
+  const showData = useSelector((state) => state.show.showData);
+  const askData = useSelector((state) => state.ask.askData);
+  const jobsData = useSelector((state) => state.jobs.jobsData);
+
+  return (
+    <Home
+      topData={topData}
+      newsData={newsData}
+      showData={showData}
+      askData={askData}
+      jobsData={jobsData}
+    />
+  );
 }

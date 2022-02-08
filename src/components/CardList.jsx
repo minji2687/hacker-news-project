@@ -6,4 +6,5 @@ export const CardList = styled.div`
   flex-direction: column;
   background: #656565;
   padding: 16px 4%;
+  min-height: 100vh;
 `;

@@ -7,6 +7,7 @@ import jobsMainBanner from "../assets/jobsMainBanner.svg";
 import SubTitle from "./SubTitle";
 import listIcon from "../assets/listIcon.svg";
 import squareIcon from "../assets/squareIcon.svg";
+import MiddleBigCard from "./card/MiddleBigCard";
 
 const JobsListInfo = styled.div`
   display: flex;
@@ -31,11 +32,15 @@ export default function Jobs({ jobsData }) {
         </div>
       </JobsListInfo>
       <CardList>
-        {jobsData.map((item) => (
-          <SimpleCard shape={"list"} data={item.data} key={item.data.id} />
-        ))}
+        {jobsData.map((item, index) => {
+          if ((index + 1) % 6 === 0) {
+            return <MiddleBigCard data={item.data} key={item.data.id} />;
+          }
+          return (
+            <SimpleCard shape={"list"} data={item.data} key={item.data.id} />
+          );
+        })}
       </CardList>
     </MainContentWrap>
   );
-  // return <SimpleCard shape={"list"} />;
 }

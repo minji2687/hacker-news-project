@@ -56,7 +56,7 @@ export default function SimpleCard({ data, shape, isUrl }) {
 
       <div>
         <SimpleCardTitle shape={shape}>{data.title}</SimpleCardTitle>
-        <SimpleCardInfo shape={shape}>
+        <SimpleCardInfo shape={shape} isUrl={isUrl}>
           {shape === "list" ? <Ranking>001</Ranking> : null}
           <SimpleCardCreatedDate>1 min ago</SimpleCardCreatedDate>
         </SimpleCardInfo>

@@ -7,10 +7,11 @@ const RankerCardWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 10px;
+  margin-right: 10px;
   box-shadow: 0px 4px 4px #000000;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  background: #fff;
 `;
 const UserID = styled.strong``;
 

@@ -79,7 +79,7 @@ function* getNewsSaga(action) {
     const promiseArr = yield requestItems(res.data);
 
     const newsData = yield call(axios.all, promiseArr);
-    // console.log(newsData);
+    console.log("newsData", newsData);
 
     yield put(getNewsSuccess(newsData));
   } catch (error) {

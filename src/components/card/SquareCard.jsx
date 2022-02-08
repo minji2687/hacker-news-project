@@ -1,13 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  CardWrap,
-  CardInfo,
-  Ranking,
-  Writer,
-  CreatedDate,
-  CardDoc,
-  Title,
-} from "./Card";
+import { CardWrap, Writer, CreatedDate, Title } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 import { Link } from "react-router-dom";
 
@@ -32,14 +24,13 @@ const SquareCardWriter = styled(Writer)`
 const SquareCardCreatedDate = styled(CreatedDate)`
   font-size: 16px;
 `;
-export default function SquareCard(data) {
+export default function SquareCard({ data }) {
   return (
     <SquareCardWrap>
       <SquareCardCreatedDate>1 min ago</SquareCardCreatedDate>
       <SquareCardTitle>
         <Link to={`/ask/${data.id}`} key={data.id}>
-          {/* {data.title} */}
-          Where are you going to find long-form content online these days?
+          {data.title}
         </Link>
       </SquareCardTitle>
       <SquareCardWriter>idforstmeier</SquareCardWriter>
