@@ -50,9 +50,10 @@ export const ShowPointNum = styled(PointNum)`
 export const ShowCommentNum = styled(CommentNum)`
   background-size: 23px;
   font-size: 11.6471px;
+  cursor: pointer;
 `;
 
-export default function ShowCard({ data }) {
+export default function ShowCard({ data, clickModal }) {
   return (
     <ShowCardWrap>
       <ShowCardInfo>
@@ -67,7 +68,7 @@ export default function ShowCard({ data }) {
           <ShowPointNum>
             <span>97</span>
           </ShowPointNum>
-          <ShowCommentNum>
+          <ShowCommentNum onClick={() => clickModal(data)}>
             <span>100</span>
           </ShowCommentNum>
         </ShowAdditionalInfo>

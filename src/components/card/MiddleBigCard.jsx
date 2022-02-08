@@ -10,6 +10,8 @@ export const CardPicture = styled.div`
   height: 223px;
   background: gray;
   background: url(${({ picture }) => picture}) no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 export const MiddleCardInfo = styled.div`
   padding: 19px 25px;

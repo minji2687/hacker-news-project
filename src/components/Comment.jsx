@@ -91,7 +91,7 @@ export default function Comment({ comment, reply }) {
 
         {replyComment &&
           replyComment.map((comment) => {
-            return <Comment reply={true} comment={comment} />;
+            return <Comment reply={true} comment={comment} key={comment.id} />;
           })}
       </CommentWrap>
     </CommentContainer>

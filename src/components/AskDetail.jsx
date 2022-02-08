@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
-import { CardList } from "./CardList";
 import Comment from "./Comment";
 import { Title, CreatedDate, Writer } from "./card/Card";
 import CardAdditionalInfo from "./card/CardAdditionalInfo";
 
-const AskDetailWrap = styled.div`
+export const AskDetailWrap = styled.div`
   padding: 0 4%;
   background: #656565;
   padding-top: 10px;
   min-height: 100vh;
 `;
-const AskInfo = styled.div`
+export const AskInfo = styled.div`
   height: 36px;
   background: #fffbf7;
   border-radius: 10px;
@@ -21,30 +20,31 @@ const AskInfo = styled.div`
   padding: 0 12px;
 `;
 
-const AskTitle = styled(Title)`
+export const AskTitle = styled(Title)`
   border-radius: 8px;
   background: #fff;
   font-size: 24px;
   line-height: 33px;
   padding: 24px 12px;
 `;
-const UserID = styled(Writer)`
+export const UserID = styled(Writer)`
   margin: 0;
 `;
 
-const AskCreatedDate = styled(CreatedDate)`
+export const AskCreatedDate = styled(CreatedDate)`
   margin: 0;
   font-size: 14px;
 `;
 
-const AskContents = styled.div`
+export const AskContents = styled.div`
   padding: 14px 10px;
   background: #fff;
   line-height: 22px;
   border-radius: 8px;
   margin-bottom: 10px;
 `;
-const CommentDivision = styled.div`
+
+export const CommentDivision = styled.div`
   height: 51px;
   background: #ffc700;
   border-radius: 8px;
