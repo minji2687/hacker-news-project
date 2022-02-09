@@ -5,8 +5,10 @@ import MainBanner from "./MainBanner";
 import { CardList } from "./CardList";
 import jobsMainBanner from "../assets/jobsMainBanner.svg";
 import SubTitle from "./SubTitle";
-import listIcon from "../assets/listIcon.svg";
-import squareIcon from "../assets/squareIcon.svg";
+import listOn from "../assets/listOn.svg";
+import listOff from "../assets/listOff.svg";
+import squareOff from "../assets/squareOff.svg";
+import squareOn from "../assets/squareOn.svg";
 import MiddleBigCard from "./card/MiddleBigCard";
 import { useState } from "react";
 
@@ -23,7 +25,33 @@ const JobsCardList = styled(CardList)`
   flex-direction: ${({ listFormat }) =>
     listFormat === "list" ? "column" : "row"};
   justify-content: start;
+  padding: 0;
+  padding-top: 18px;
+  with: 30px;
+  height: 30px;
 `;
+
+const ListFormatIcon = styled.span`
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background: url(${({ format, listFormatState }) =>
+      selectListFormatIcon(format, listFormatState)})
+    no-repeat;
+`;
+function selectListFormatIcon(format, listFormatState) {
+  console.log(listFormatState);
+  if (format === "list" && listFormatState === "list") {
+    return listOn;
+  } else if (format === "list" && listFormatState === "square") {
+    return listOff;
+  } else if (format === "square" && listFormatState === "list") {
+    console.log("squareOff");
+    return squareOff;
+  } else if (format === "square" && listFormatState === "square") {
+    return squareOn;
+  }
+}
 
 export default function Jobs({ jobsData }) {
   const [listFormat, setListFormat] = useState("list");
@@ -42,19 +70,21 @@ export default function Jobs({ jobsData }) {
       <JobsListInfo>
         <SubTitle>Jobs</SubTitle>
         <div>
-          <span onClick={handleListFormatToList}>
-            <img src={listIcon} alt="리스트 형식" />
-          </span>
-          <span onClick={handleListFormatToSquare}>
-            <img src={squareIcon} alt="사각형카드 형식" />
-          </span>
+          <ListFormatIcon
+            onClick={handleListFormatToList}
+            format={"list"}
+            listFormatState={listFormat}
+          ></ListFormatIcon>
+          <ListFormatIcon
+            onClick={handleListFormatToSquare}
+            format={"square"}
+            listFormatState={listFormat}
+          ></ListFormatIcon>
         </div>
       </JobsListInfo>
       <JobsCardList>
         {jobsData.map((item, index) => {
           if (listFormat === "list" && (index + 1) % 6 === 0) {
-            return <MiddleBigCard data={item.data} key={item.data.id} />;
-          } else if (listFormat === "square" && (index + 1) % 7 === 0) {
             return <MiddleBigCard data={item.data} key={item.data.id} />;
           }
 

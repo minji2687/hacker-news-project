@@ -2,13 +2,19 @@ import styled from "@emotion/styled";
 import { CardWrap, CardInfo, CreatedDate, Ranking, Title } from "./Card";
 
 export const SimpleCardWrap = styled(CardWrap)`
-  width: ${({ shape }) => (shape === "list" ? "100%" : "48%")};
+  width: ${({ shape }) => (shape === "list" ? "92%" : "44%")};
   height: ${({ shape }) => (shape === "list" ? "auto" : "177px")};
   padding: ${({ shape }) => (shape === "list" ? "9px" : "14px")};
-  min-width: ${({ shape }) => (shape === "list" ? "100%" : "48%")};
 
   display: flex;
   flex-direction: column;
+  margin-right: 4%;
+  margin-left: 4%;
+  margin-bottom: 4%;
+
+  &:nth-of-type(even) {
+    margin-left: ${({ shape }) => (shape === "list" ? "4%" : "0")};
+  }
 
   & > div {
     display: flex;
