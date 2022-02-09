@@ -3,8 +3,8 @@ import TopCard from "./card/TopCard";
 import ShowHomeCard from "./card/ShowHomeCard";
 import RankerCard from "./card/RankerCard";
 import SquareCard from "./card/SquareCard";
-import Card from "./card/Card";
 import SimpleCard from "./card/SimpleCard";
+import HomeNewCard from "./card/HomeNewCard";
 
 const HomeWrap = styled.main`
   background: #656565;
@@ -64,7 +64,7 @@ export default function Home({
           if (index > 2) {
             return;
           }
-          return <Card data={data} key={data.id} />;
+          return <HomeNewCard data={data} key={data.id} />;
         })}
       </HomeInnerWrap>
       <HomeSubTitle>SHOW</HomeSubTitle>

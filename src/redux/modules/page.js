@@ -3,6 +3,8 @@ export const CHANGE_NEWS_PAGE = "redux-start/page/CHANGE_NEWS_PAGE";
 export const CHANGE_SHOW_PAGE = "redux-start/page/CHANGE_SHOW_PAGE";
 export const CHANGE_ASK_PAGE = "redux-start/page/CHANGE_ASK_PAGE";
 export const CHANGE_JOBS_PAGE = "redux-start/page/CHANGE_JOBS_PAGE";
+export const CHANGE_ABOUT_PAGE = "redux-start/page/CHANGE_ABOUT_PAGE";
+export const CHANGE_USER_PAGE = "redux-start/page/CHANGE_USER_PAGE";
 
 // 액션 생성 함수
 export function changeHomePage() {
@@ -28,6 +30,16 @@ export function changeAskPage() {
 export function changeJobsPage() {
   return {
     type: CHANGE_JOBS_PAGE,
+  };
+}
+export function changeAboutPage() {
+  return {
+    type: CHANGE_ABOUT_PAGE,
+  };
+}
+export function changeUserPage() {
+  return {
+    type: CHANGE_USER_PAGE,
   };
 }
 
@@ -60,6 +72,14 @@ export default function reducer(state = initialState, action) {
     case CHANGE_JOBS_PAGE:
       return {
         page: "JOBS",
+      };
+    case CHANGE_ABOUT_PAGE:
+      return {
+        page: "ABOUT",
+      };
+    case CHANGE_USER_PAGE:
+      return {
+        page: "USER",
       };
 
     default:

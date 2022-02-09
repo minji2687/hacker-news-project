@@ -27,8 +27,6 @@ const JobsCardList = styled(CardList)`
   justify-content: start;
   padding: 0;
   padding-top: 18px;
-  with: 30px;
-  height: 30px;
 `;
 
 const ListFormatIcon = styled.span`

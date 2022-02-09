@@ -6,6 +6,8 @@ import Jobs from "./pages/Jobs";
 import Show from "./pages/Show";
 import Home from "./pages/Home";
 import AskDetailContainer from "./containers/AskDetailContainer";
+import User from "./pages/User";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/ask" element={<Ask />} />
           <Route path="/ask/:askId" element={<AskDetailContainer />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/user/:userId" element={<User />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Layout>
     </BrowserRouter>

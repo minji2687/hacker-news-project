@@ -11,6 +11,7 @@ export const CardWrap = styled.div`
   border-radius: 10px;
   background: #fff;
   margin-bottom: 16px;
+  overflow: hidden;
 `;
 
 export const CardInfo = styled.div`
