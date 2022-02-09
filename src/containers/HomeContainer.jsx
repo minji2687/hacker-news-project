@@ -18,11 +18,13 @@ export default function HomeContainer() {
     dispatch(getTopSagaStart());
   }, []);
 
+  //Fatch Data
   const topData = useSelector((state) => state.top.topData);
   const newsData = useSelector((state) => state.news.newsData);
   const showData = useSelector((state) => state.show.showData);
   const askData = useSelector((state) => state.ask.askData);
   const jobsData = useSelector((state) => state.jobs.jobsData);
+  //Page
 
   return (
     <Home
