@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-
 import { Link } from "react-router-dom";
 import {
   CardWrap,
@@ -11,18 +10,25 @@ import {
   Title,
 } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
+import { newCardProfileImg } from "../../util";
 
 const HomeNewCardInfo = styled(CardInfo)`
   background: #ffedab;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  a {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const UserProfile = styled.div`
   width: 50px;
   height: 50px;
-  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
+  background: url(${({ defaultProfile }) => defaultProfile}) no-repeat center;
 `;
 
 const CardDocInfo = styled.div`
@@ -31,12 +37,14 @@ const CardDocInfo = styled.div`
   align-items: baseline;
 `;
 
-export default function HomeNewCard({ data }) {
+export default function HomeNewCard({ data, clickModal }) {
   return (
     <CardWrap>
       <HomeNewCardInfo>
-        <UserProfile></UserProfile>
-        <Writer>{data.by}</Writer>
+        <Link to={`/user/${data.by}`}>
+          <UserProfile defaultProfile={newCardProfileImg()}></UserProfile>
+          <Writer>{data.by}</Writer>
+        </Link>
       </HomeNewCardInfo>
       <CardDoc>
         <Title>
@@ -46,8 +54,10 @@ export default function HomeNewCard({ data }) {
         </Title>
         <CardDocInfo>
           <CardAdditionalInfo
+            data={data}
             scoreNum={data.score}
             commentNum={data.descendants}
+            clickModal={clickModal}
           />
           <CreatedDate>1 min ago</CreatedDate>
         </CardDocInfo>

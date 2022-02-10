@@ -48,7 +48,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        newsData: action.newsData,
+        newsData: [...state.newsData, ...action.newsData],
       };
 
     case GET_NEWS_FAIL:
@@ -66,6 +66,7 @@ export default function reducer(state = initialState, action) {
 //saga
 
 const GET_NEWS_SAGA_START = "GET_NEWS_SAGA_START";
+let startNum = 0;
 
 function* getNewsSaga(action) {
   try {
@@ -76,9 +77,18 @@ function* getNewsSaga(action) {
       "https://hacker-news.firebaseio.com/v0/newstories.json"
     );
 
-    const promiseArr = yield requestItems(res.data);
+    const itemNum = 10;
+    console.log(startNum, itemNum);
+
+    let sliceResData = res.data.slice(startNum, startNum + itemNum);
+
+    console.log(sliceResData);
+    startNum += itemNum;
+
+    const promiseArr = yield requestItems(sliceResData);
 
     const newsData = yield call(axios.all, promiseArr);
+
     console.log("newsData", newsData);
 
     yield put(getNewsSuccess(newsData));

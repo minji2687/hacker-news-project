@@ -66,6 +66,7 @@ export default function reducer(state = initialState, action) {
 //saga
 
 const GET_ASK_SAGA_START = "GET_ASK_SAGA_START";
+let startNum = 0;
 
 function* getAskSaga(action) {
   try {
@@ -76,7 +77,13 @@ function* getAskSaga(action) {
       "https://hacker-news.firebaseio.com/v0/askstories.json"
     );
 
-    const promiseArr = yield requestItems(res.data);
+    const itemNum = 10;
+
+    let sliceResData = res.data.slice(startNum, startNum + itemNum);
+
+    startNum += itemNum;
+
+    const promiseArr = yield requestItems(sliceResData);
 
     const askData = yield call(axios.all, promiseArr);
     console.log("askData", askData);

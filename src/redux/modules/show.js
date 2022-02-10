@@ -76,7 +76,14 @@ function* getShowSaga(action) {
       "https://hacker-news.firebaseio.com/v0/showstories.json"
     );
 
-    const promiseArr = yield requestItems(res.data);
+    let startNum = 0;
+    const itemNum = 10;
+
+    let sliceResData = res.data.slice(startNum, startNum + itemNum);
+
+    startNum += itemNum;
+
+    const promiseArr = yield requestItems(sliceResData);
 
     const showData = yield call(axios.all, promiseArr);
     console.log("showData", showData);

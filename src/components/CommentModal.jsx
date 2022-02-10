@@ -11,6 +11,7 @@ const CommentModalWrap = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
+  overflow: scroll;
   z-index: 2;
   top: ${({ openModal }) => (openModal ? 0 : "100%")};
   transition: top 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.2s;
@@ -59,7 +60,6 @@ export default function CommentModal({
       <ModalCloseBtn onClick={closeModal}>
         <img src={modalClose} alt="모달 닫기 버튼" />
       </ModalCloseBtn>
-      {/* <CommentTitle>fdjkslfjksldjfs</CommentTitle> */}
       <CommentTitle>{itemData && itemData.title}</CommentTitle>
       <CommentInfo>
         <CardAdditionalInfo modal={true} />

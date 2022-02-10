@@ -75,8 +75,14 @@ function* getJobsSaga(action) {
       axios.get,
       "https://hacker-news.firebaseio.com/v0/jobstories.json"
     );
+    let startNum = 0;
+    const itemNum = 10;
 
-    const promiseArr = yield requestItems(res.data);
+    let sliceResData = res.data.slice(startNum, startNum + itemNum);
+
+    startNum += itemNum;
+
+    const promiseArr = yield requestItems(sliceResData);
 
     const jobsData = yield call(axios.all, promiseArr);
     console.log("jobsData", jobsData);

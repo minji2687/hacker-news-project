@@ -13,6 +13,7 @@ const CardInfo = styled.div`
   z-index: 1;
   flex-direction: column;
   padding: 25px 12px 0 12px;
+  width: 100%;
 `;
 
 const TopTitle = styled(Title)`
@@ -58,7 +59,7 @@ const BackgroundNum = styled.div`
   z-index: 0;
 `;
 
-export default function TopCard({ data, ranking }) {
+export default function TopCard({ data, ranking, clickModal }) {
   return (
     <TopCardWrap>
       <BackgroundNum>{ranking}</BackgroundNum>
@@ -66,8 +67,10 @@ export default function TopCard({ data, ranking }) {
         <TopCreatedDate>1 min ago</TopCreatedDate>
         <TopTitle>{data.title}</TopTitle>
         <CardAdditionalInfo
+          data={data}
           scoreNum={data.score}
           commentNum={data.descendants}
+          clickModal={clickModal}
         />
         <IdSection>{data.by}</IdSection>
       </CardInfo>

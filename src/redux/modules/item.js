@@ -25,18 +25,18 @@ import axios from "axios";
 // }
 
 export function requestItems(IDdataArr) {
-  let startItemNum;
-  let endItemNum;
-  let IDItem;
-  if (IDdataArr.length > 10) {
-    startItemNum = 0;
-    endItemNum = 10;
-    IDItem = IDdataArr.slice(startItemNum, endItemNum);
-  } else {
-    IDItem = IDdataArr;
-  }
+  // let startItemNum;
+  // let endItemNum;
+  // let IDItem;
+  // if (IDdataArr.length > 10) {
+  //   startItemNum = 0;
+  //   endItemNum = 10;
+  //   IDItem = IDdataArr.slice(startItemNum, endItemNum);
+  // } else {
+  //   IDItem = IDdataArr;
+  // }
 
-  return IDItem.map((id) =>
+  return IDdataArr.map((id) =>
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
   );
 }

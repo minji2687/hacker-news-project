@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 import { CardDoc, Title, CreatedDate } from "./Card";
 import profile from "../../assets/profile.svg";
+import { newCardProfileImg } from "../../util";
 
 import {
   ShowCardWrap,
@@ -33,16 +34,31 @@ const ShowHomeCreatedDate = styled(CreatedDate)`
   margin-bottom: 8px;
 `;
 
-export default function ShowHomeCard({ data }) {
+const UserProfile = styled.span`
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0.293333px solid rgba(0, 0, 0, 0.6);
+  background: url(${({ userProfileImg }) => userProfileImg}) no-repeat center;
+  background-size: 35px;
+`;
+
+export default function ShowHomeCard({ data, clickModal }) {
   return (
     <ShowHomeCardWrap>
       <ShowHomeCreatedDate>3 min ago</ShowHomeCreatedDate>
       <ShowHomeTitle>{data.title}</ShowHomeTitle>
       <ShowHomeUserInfo>
-        <img src={profile} alt="profile" />
+        <UserProfile userProfileImg={newCardProfileImg()}></UserProfile>
         <ShowUserName>{data.by}</ShowUserName>
       </ShowHomeUserInfo>
-      <CardAdditionalInfo scoreNum={data.score} commentNum={data.descendants} />
+      <CardAdditionalInfo
+        data={data}
+        scoreNum={data.score}
+        commentNum={data.descendants}
+        clickModal={clickModal}
+      />
     </ShowHomeCardWrap>
   );
 }

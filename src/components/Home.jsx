@@ -1,15 +1,18 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 import TopCard from "./card/TopCard";
 import ShowHomeCard from "./card/ShowHomeCard";
 import RankerCard from "./card/RankerCard";
 import SquareCard from "./card/SquareCard";
-import SimpleCard from "./card/SimpleCard";
 import HomeNewCard from "./card/HomeNewCard";
+import CommentModalContainer from "../containers/CommentModalContainer";
+import HomeJobCard from "./card/HomeJobCard";
 
 const HomeWrap = styled.main`
   background: #656565;
   padding-left: 20px;
   padding-top: 10px;
+  padding-bottom: 83px;
 `;
 const HomeInnerWrap = styled.div`
   padding-right: 20px;
@@ -46,55 +49,101 @@ export default function Home({
   askData,
   jobsData,
 }) {
-  return (
-    <HomeWrap>
-      <HomeSubTitle>Ranker</HomeSubTitle>
-      <RankerCard />
-      <HomeSubTitle>TOP</HomeSubTitle>
-      <HorizontalCardList>
-        <HorizontalCardListInnerWrap>
-          {topData.map(({ data }, index) => {
-            return <TopCard data={data} key={data.id} ranking={index + 1} />;
-          })}
-        </HorizontalCardListInnerWrap>
-      </HorizontalCardList>
-      <HomeInnerWrap>
-        <HomeSubTitle>NEW</HomeSubTitle>
-        {newsData.map(({ data }, index) => {
-          if (index > 2) {
-            return;
-          }
-          return <HomeNewCard data={data} key={data.id} />;
-        })}
-      </HomeInnerWrap>
-      <HomeSubTitle>SHOW</HomeSubTitle>
-      <HorizontalCardList>
-        <HorizontalCardListInnerWrap>
-          {showData.map(({ data }) => {
-            return <ShowHomeCard data={data} key={data.id} />;
-          })}
-        </HorizontalCardListInnerWrap>
-      </HorizontalCardList>
+  const [modalData, setModalData] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
 
-      <HomeSubTitle>ASK</HomeSubTitle>
-      <HorizontalCardList>
-        <HorizontalCardListInnerWrap>
-          {askData.map(({ data }) => {
-            return <SquareCard data={data} key={data.id} />;
+  function clickModal(data) {
+    setModalData(data);
+    setOpenModal(true);
+  }
+
+  function closeModal() {
+    setOpenModal(false);
+  }
+  return (
+    <>
+      <HomeWrap>
+        <HomeSubTitle>Ranker</HomeSubTitle>
+        <HorizontalCardList>
+          <HorizontalCardListInnerWrap>
+            {showData.map(({ data }, index) => {
+              if (index > 2) {
+                return;
+              }
+              return (
+                <RankerCard data={data} key={data.id} clickModal={clickModal} />
+              );
+            })}
+          </HorizontalCardListInnerWrap>
+        </HorizontalCardList>
+        <HomeSubTitle>TOP</HomeSubTitle>
+        <HorizontalCardList>
+          <HorizontalCardListInnerWrap>
+            {topData.map(({ data }, index) => {
+              return (
+                <TopCard
+                  data={data}
+                  key={data.id}
+                  ranking={index + 1}
+                  clickModal={clickModal}
+                />
+              );
+            })}
+          </HorizontalCardListInnerWrap>
+        </HorizontalCardList>
+        <HomeInnerWrap>
+          <HomeSubTitle>NEW</HomeSubTitle>
+          {newsData.map(({ data }, index) => {
+            if (index > 2) {
+              return;
+            }
+            return (
+              <HomeNewCard data={data} key={data.id} clickModal={clickModal} />
+            );
           })}
-        </HorizontalCardListInnerWrap>
-      </HorizontalCardList>
-      <HomeInnerWrap>
-        <HomeSubTitle>JOBS</HomeSubTitle>
-        {jobsData.map(({ data }, index) => {
-          if (index > 2) {
-            return;
-          }
-          return (
-            <SimpleCard isUrl={true} shape={"list"} data={data} key={data.id} />
-          );
-        })}
-      </HomeInnerWrap>
-    </HomeWrap>
+        </HomeInnerWrap>
+        <HomeSubTitle>SHOW</HomeSubTitle>
+        <HorizontalCardList>
+          <HorizontalCardListInnerWrap>
+            {showData.map(({ data }) => {
+              return (
+                <ShowHomeCard
+                  data={data}
+                  key={data.id}
+                  clickModal={clickModal}
+                />
+              );
+            })}
+          </HorizontalCardListInnerWrap>
+        </HorizontalCardList>
+
+        <HomeSubTitle>ASK</HomeSubTitle>
+        <HorizontalCardList>
+          <HorizontalCardListInnerWrap>
+            {askData.map(({ data }) => {
+              return (
+                <SquareCard data={data} key={data.id} clickModal={clickModal} />
+              );
+            })}
+          </HorizontalCardListInnerWrap>
+        </HorizontalCardList>
+        <HomeInnerWrap>
+          <HomeSubTitle>JOBS</HomeSubTitle>
+          {jobsData.map(({ data }, index) => {
+            if (index > 2) {
+              return;
+            }
+            return (
+              <HomeJobCard data={data} key={data.id} clickModal={clickModal} />
+            );
+          })}
+        </HomeInnerWrap>
+      </HomeWrap>
+      <CommentModalContainer
+        itemData={modalData}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
+    </>
   );
 }

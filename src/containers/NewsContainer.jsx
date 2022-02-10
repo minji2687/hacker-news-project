@@ -7,7 +7,5 @@ import { useSelector } from "react-redux";
 export default function NewsContainer() {
   const newsData = useSelector((state) => state.news.newsData);
 
-  console.log("container", newsData);
-
   return <News newsData={newsData} />;
 }

@@ -24,7 +24,7 @@ const SquareCardWriter = styled(Writer)`
 const SquareCardCreatedDate = styled(CreatedDate)`
   font-size: 16px;
 `;
-export default function SquareCard({ data }) {
+export default function SquareCard({ data, clickModal }) {
   return (
     <SquareCardWrap>
       <SquareCardCreatedDate>1 min ago</SquareCardCreatedDate>
@@ -34,7 +34,12 @@ export default function SquareCard({ data }) {
         </Link>
       </SquareCardTitle>
       <SquareCardWriter>idforstmeier</SquareCardWriter>
-      <CardAdditionalInfo scoreNum={data.score} commentNum={data.descendants} />
+      <CardAdditionalInfo
+        data={data}
+        scoreNum={data.score}
+        commentNum={data.descendants}
+        clickModal={clickModal}
+      />
     </SquareCardWrap>
   );
 }

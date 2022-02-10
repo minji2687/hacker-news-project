@@ -2,15 +2,13 @@ import styled from "@emotion/styled";
 import { CardWrap, CardInfo, CreatedDate, Ranking, Title } from "./Card";
 
 export const SimpleCardWrap = styled(CardWrap)`
-  width: ${({ shape }) => (shape === "list" ? "92%" : "44%")};
+  width: ${({ shape, isHome }) => (shape === "list" ? "92%" : "44%")};
   height: ${({ shape }) => (shape === "list" ? "auto" : "177px")};
   padding: ${({ shape }) => (shape === "list" ? "9px" : "14px")};
 
   display: flex;
   flex-direction: column;
-  margin-right: 4%;
-  margin-left: 4%;
-  margin-bottom: 4%;
+  margin: 0 4% 4% 4%;
 
   &:nth-of-type(even) {
     margin-left: ${({ shape }) => (shape === "list" ? "4%" : "0")};
@@ -42,30 +40,15 @@ export const SimpleCardCreatedDate = styled(CreatedDate)`
   font-size: 16px;
 `;
 
-const JobsURl = styled.div`
-  padding: 4px 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 50px;
-  border: 1px solid #000000;
-  margin: 10px auto;
-  line-height: 135%;
-`;
-
-export default function SimpleCard({ data, shape, isUrl }) {
+export default function SimpleCard({ data, shape }) {
   // shape가 list이면 길다란 모양의 컴포넌트
   // shpage가 square이면 사각형 모양의 컴포넌트
 
   return (
     <SimpleCardWrap shape={shape}>
-      {isUrl && (
-        <JobsURl>
-          <span>reverielabs.com</span>
-        </JobsURl>
-      )}
-
       <div>
         <SimpleCardTitle shape={shape}>{data.title}</SimpleCardTitle>
-        <SimpleCardInfo shape={shape} isUrl={isUrl}>
+        <SimpleCardInfo shape={shape}>
           {shape === "list" ? <Ranking>001</Ranking> : null}
           <SimpleCardCreatedDate>1 min ago</SimpleCardCreatedDate>
         </SimpleCardInfo>

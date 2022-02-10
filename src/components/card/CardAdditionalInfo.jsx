@@ -37,13 +37,19 @@ export const CommentNum = styled.div`
   }
 `;
 
-export default function CardAdditionalInfo({ scoreNum, commentNum, modal }) {
+export default function CardAdditionalInfo({
+  data,
+  scoreNum,
+  commentNum,
+  modal,
+  clickModal,
+}) {
   return (
     <AdditionalInfo>
       <PointNum modal={modal}>
         <span>{scoreNum}</span>
       </PointNum>
-      <CommentNum modal={modal}>
+      <CommentNum modal={modal} onClick={() => clickModal(data)}>
         <span>{commentNum}</span>
       </CommentNum>
     </AdditionalInfo>

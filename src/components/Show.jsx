@@ -19,6 +19,7 @@ export default function Show({ showData }) {
   function closeModal() {
     setOpenModal(false);
   }
+
   return (
     <MainContentWrap>
       <MainBanner background={ShowMainBanner} />

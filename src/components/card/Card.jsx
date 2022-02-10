@@ -46,6 +46,7 @@ export const CardDoc = styled.div`
   padding-top: 18px;
   position: relative;
   width: 70%;
+  padding-right: 16px;
 `;
 
 export const Title = styled.h3`

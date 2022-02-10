@@ -76,7 +76,14 @@ function* getTopSaga(action) {
       "https://hacker-news.firebaseio.com/v0/topstories.json"
     );
 
-    const promiseArr = yield requestItems(res.data);
+    let startNum = 0;
+    const itemNum = 10;
+
+    let sliceResData = res.data.slice(startNum, startNum + itemNum);
+
+    startNum += itemNum;
+
+    const promiseArr = yield requestItems(sliceResData);
 
     const topData = yield call(axios.all, promiseArr);
     console.log("topData", topData);
