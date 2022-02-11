@@ -15,6 +15,14 @@ import profileMonkey from "./assets/newCardProfile/monkey.svg";
 import profileRabbit from "./assets/newCardProfile/rabbit.svg";
 import profileRaindear from "./assets/newCardProfile/raindear.svg";
 
+import id_1 from "./assets/user/id_1.svg";
+import id_2 from "./assets/user/id_2.svg";
+import id_3 from "./assets/user/id_3.svg";
+import id_4 from "./assets/user/id_4.svg";
+import id_5 from "./assets/user/id_5.svg";
+import id_6 from "./assets/user/id_6.svg";
+import id_7 from "./assets/user/id_7.svg";
+
 const rankerBackgorundPhoto = [
   bear,
   cat,
@@ -44,4 +52,11 @@ const newCardProfile = [
 export function newCardProfileImg() {
   let randomNum = Math.floor(Math.random() * newCardProfile.length + 1);
   return newCardProfile[randomNum];
+}
+
+const userProfileImg = [id_1, id_2, id_3, id_4, id_5, id_6, id_7];
+
+export function randomUserProfileImg() {
+  let randomNum = Math.floor(Math.random() * userProfileImg.length + 1);
+  return userProfileImg[randomNum];
 }

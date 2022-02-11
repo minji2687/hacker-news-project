@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import about from "../assets/about.svg";
 
 const AboutWrap = styled.div`
-  padding: 51px 4%;
+  padding: 51px 4% 0;
   background: url(${about}) no-repeat;
   background-position: 104px 380px;
-  height: 100vh;
+  height: calc(100vh - 83px);
 `;
 const AboutText = styled.div`
   font-family: Newsreader;
@@ -17,7 +17,12 @@ const AboutText = styled.div`
 `;
 const Footer = styled.footer`
   position: absolute;
-  bottom: 83px;
+  bottom: 15px;
+  p {
+    line-height: 138.19%;
+    text-align: center;
+    margin-bottom: 7px;
+  }
 `;
 const Copyright = styled.p`
   color: #656565;

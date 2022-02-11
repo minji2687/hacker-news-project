@@ -2,9 +2,10 @@ import logo from "../../assets/logo.svg";
 import back from "../../assets/backArrow.svg";
 import menu from "../../assets/menu.svg";
 import styled from "@emotion/styled";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changeAboutPage } from "../../redux/modules/page";
+import userPageBack from "../../assets/user/userPageBack.svg";
 
 const HeaderWrap = styled.header`
   position: relative;
@@ -31,24 +32,43 @@ const Logo = styled.h1`
   color: ${({ path }) => (path === "about" ? "#000" : "#fff")};
 `;
 
+const UserId = styled.div`
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 138.19%;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+`;
 export default function Header() {
-  const page = useSelector((state) => state.page.page);
   let navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname.slice(1);
+  const params = useParams();
   const dispatch = useDispatch();
+  const userPath = path.slice(0, 4);
+  const useId = location.pathname.split("/")[2];
 
   return (
     <HeaderWrap path={path}>
       {path === "about" ? (
         <img src={back} alt="뒤로가기" onClick={() => navigate(-1)} />
+      ) : userPath === "user" ? (
+        <img src={userPageBack} alt="로고" />
       ) : (
         <img src={logo} alt="로고" />
       )}
       <Logo path={path}>
-        {path === "about" ? "Hello World!" : "Hacker News"}
+        {path === "about" ? (
+          "Hello World!"
+        ) : userPath === "user" ? (
+          <UserId>{useId}</UserId>
+        ) : (
+          "Hacker News"
+        )}
       </Logo>
-      {path === "about" ? null : (
+      {path === "about" || useId ? null : (
         <span onClick={() => dispatch(changeAboutPage())}>
           <Link to="/about">
             <img src={menu} alt="메뉴" />

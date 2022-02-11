@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import homeNon from "../../assets/home-non.svg";
 import jobsNon from "../../assets/jobs-non.svg";
 import showNon from "../../assets/show-non.svg";
@@ -41,6 +41,7 @@ const NavItem = styled.li`
   align-items: center;
   position: relative;
   background: url(${selectIcon}) no-repeat center;
+  cursor: pointer;
   a {
     height: 100%;
     color: white;
@@ -102,24 +103,27 @@ export default function Navigation() {
     },
   ]);
 
+  const location = useLocation();
+  const path = location.pathname.slice(1);
+
   return (
-    <NavWrap>
-      <Nav>
-        {navigation.map((item) => (
-          <NavItem
-            key={item.routeName}
-            page={page}
-            NonIcon={item.nonIcon}
-            FillIcon={item.fillIcon}
-            onClick={() => dispatch(item.changePage())}
-            label={item.label}
-          >
-            <Link to={item.routeName}>
-              {/* <img src={item.imgUrl} alt={item.label} /> */}
-            </Link>
-          </NavItem>
-        ))}
-      </Nav>
-    </NavWrap>
+    path !== "about" && (
+      <NavWrap>
+        <Nav>
+          {navigation.map((item) => (
+            <NavItem
+              key={item.routeName}
+              page={page}
+              NonIcon={item.nonIcon}
+              FillIcon={item.fillIcon}
+              onClick={() => dispatch(item.changePage())}
+              label={item.label}
+            >
+              <Link to={item.routeName}></Link>
+            </NavItem>
+          ))}
+        </Nav>
+      </NavWrap>
+    )
   );
 }
