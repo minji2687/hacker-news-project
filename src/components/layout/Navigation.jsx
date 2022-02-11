@@ -21,6 +21,8 @@ import {
 } from "../../redux/modules/page";
 
 const NavWrap = styled.nav`
+  max-width: 414px;
+  margin: 0 auto;
   width: 100%;
   background: #ffc700;
   height: 83px;
