@@ -23,6 +23,11 @@ const JobsURl = styled.div`
   margin: 10px auto;
   line-height: 135%;
 `;
+
+const HomeJobCardCreatedDate = styled(SimpleCardCreatedDate)`
+  justify-content: start;
+`;
+
 export default function HomeJobCard({ data }) {
   return (
     <HomeSimpleCardWrap shape="list">
@@ -33,7 +38,7 @@ export default function HomeJobCard({ data }) {
       <div>
         <SimpleCardTitle shape="list">{data.title}</SimpleCardTitle>
         <SimpleCardInfo shape="list">
-          <SimpleCardCreatedDate>1 min ago</SimpleCardCreatedDate>
+          <HomeJobCardCreatedDate>1 min ago</HomeJobCardCreatedDate>
         </SimpleCardInfo>
       </div>
     </HomeSimpleCardWrap>

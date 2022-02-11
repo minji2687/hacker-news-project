@@ -21,10 +21,13 @@ const ShowHomeCardWrap = styled(ShowCardWrap)`
 
 const ShowHomeTitle = styled(Title)`
   text-align: center;
+  font-size: 16px;
+  min-height: 66px;
 `;
 
 const ShowHomeUserInfo = styled(ShowUserInfo)`
   flex-direction: row;
+  margin: 6px 0;
 `;
 
 const ShowHomeCreatedDate = styled(CreatedDate)`
@@ -42,6 +45,7 @@ const UserProfile = styled.span`
   border: 0.293333px solid rgba(0, 0, 0, 0.6);
   background: url(${({ userProfileImg }) => userProfileImg}) no-repeat center;
   background-size: 35px;
+  margin-right: 3px;
 `;
 
 export default function ShowHomeCard({ data, clickModal }) {

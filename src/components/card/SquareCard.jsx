@@ -14,6 +14,7 @@ const SquareCardTitle = styled(Title)`
   text-align: center;
   -webkit-line-clamp: 4;
   margin-top: 8px;
+  height: 99px;
 `;
 
 const SquareCardWriter = styled(Writer)`
@@ -33,7 +34,7 @@ export default function SquareCard({ data, clickModal }) {
           {data.title}
         </Link>
       </SquareCardTitle>
-      <SquareCardWriter>idforstmeier</SquareCardWriter>
+      <SquareCardWriter>{data.by}</SquareCardWriter>
       <CardAdditionalInfo
         data={data}
         scoreNum={data.score}

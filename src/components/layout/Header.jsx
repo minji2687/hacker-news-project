@@ -45,7 +45,6 @@ export default function Header() {
   let navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname.slice(1);
-  const params = useParams();
   const dispatch = useDispatch();
   const userPath = path.slice(0, 4);
   const useId = location.pathname.split("/")[2];
@@ -55,7 +54,7 @@ export default function Header() {
       {path === "about" ? (
         <img src={back} alt="뒤로가기" onClick={() => navigate(-1)} />
       ) : userPath === "user" ? (
-        <img src={userPageBack} alt="로고" />
+        <img src={userPageBack} alt="로고" onClick={() => navigate(-1)} />
       ) : (
         <img src={logo} alt="로고" />
       )}
