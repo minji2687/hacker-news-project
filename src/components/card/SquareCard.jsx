@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { CardWrap, Writer, CreatedDate, Title } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 import { Link } from "react-router-dom";
+import { convertDateForm } from "../../util";
 
 const SquareCardWrap = styled(CardWrap)`
   width: 175px;
@@ -28,7 +29,9 @@ const SquareCardCreatedDate = styled(CreatedDate)`
 export default function SquareCard({ data, clickModal }) {
   return (
     <SquareCardWrap>
-      <SquareCardCreatedDate>1 min ago</SquareCardCreatedDate>
+      <SquareCardCreatedDate>
+        {convertDateForm(data.time)}
+      </SquareCardCreatedDate>
       <SquareCardTitle>
         <Link to={`/ask/${data.id}`} key={data.id}>
           {data.title}

@@ -60,3 +60,35 @@ export function randomUserProfileImg() {
   let randomNum = Math.floor(Math.random() * userProfileImg.length + 1);
   return userProfileImg[randomNum];
 }
+
+export function convertDateForm(timeStamp) {
+  let nowYear = new Date(Date.now()).getFullYear();
+  let nowMonth = new Date(Date.now()).getMonth() + 1;
+  let nowDate = new Date(Date.now()).getDate();
+  let nowHours = new Date(Date.now()).getHours();
+  let nowMinutes = new Date(Date.now()).getMinutes();
+  let nowSeconds = new Date(Date.now()).getSeconds();
+
+  const date = new Date(timeStamp * 1000);
+
+  let itemYear = date.getFullYear();
+  let itemMonth = date.getMonth() + 1;
+  let itemDate = date.getDate();
+  let itemHours = date.getHours();
+  let itemMinutes = date.getMinutes();
+  let itemSeconds = date.getSeconds();
+
+  if (nowYear > itemYear) {
+    return `${nowYear - itemYear} years ago`;
+  } else if (nowMonth > itemMonth) {
+    return `${nowMonth - itemMonth} month ago`;
+  } else if (nowDate > itemDate) {
+    return `${nowDate - itemDate} date ago`;
+  } else if (nowHours > itemHours) {
+    return `${nowHours - itemHours} hours ago`;
+  } else if (nowMinutes > itemMinutes) {
+    return `${nowMinutes - itemMinutes} minutes ago`;
+  } else if (nowSeconds > itemSeconds) {
+    return `${nowSeconds - itemSeconds} seconds ago`;
+  }
+}

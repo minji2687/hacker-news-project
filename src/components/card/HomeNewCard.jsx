@@ -10,7 +10,7 @@ import {
   Title,
 } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
-import { newCardProfileImg } from "../../util";
+import { convertDateForm, newCardProfileImg } from "../../util";
 
 const HomeNewCardInfo = styled(CardInfo)`
   background: #ffedab;
@@ -59,7 +59,7 @@ export default function HomeNewCard({ data, clickModal }) {
             commentNum={data.descendants}
             clickModal={clickModal}
           />
-          <CreatedDate>1 min ago</CreatedDate>
+          <CreatedDate>{convertDateForm(data.time)}</CreatedDate>
         </CardDocInfo>
       </CardDoc>
     </CardWrap>

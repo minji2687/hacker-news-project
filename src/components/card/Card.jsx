@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { convertDateForm } from "../../util";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 
 export const CardWrap = styled.div`
@@ -68,7 +69,7 @@ export default function Card({ data }) {
       <CardInfo>
         <Ranking>1</Ranking>
         <Writer>{data.by}</Writer>
-        <CreatedDate>1 min ago</CreatedDate>
+        <CreatedDate>{convertDateForm(data.time)}</CreatedDate>
       </CardInfo>
       <CardDoc>
         <Title>

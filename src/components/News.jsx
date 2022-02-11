@@ -27,7 +27,7 @@ export default function News({ newsData }) {
       }
     }, options);
     observer.observe(ObserverRef.current);
-  }, [ObserverRef, options]);
+  }, []);
 
   return (
     <MainContentWrap>

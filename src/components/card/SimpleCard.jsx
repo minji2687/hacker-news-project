@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { convertDateForm } from "../../util";
 import { CardWrap, CardInfo, CreatedDate, Ranking, Title } from "./Card";
 
 export const SimpleCardWrap = styled(CardWrap)`
@@ -9,6 +10,7 @@ export const SimpleCardWrap = styled(CardWrap)`
   display: flex;
   flex-direction: column;
   margin: 0 4% 4% 4%;
+  justify-content: center;
 
   &:nth-of-type(even) {
     margin-left: ${({ shape }) => (shape === "list" ? "4%" : "0")};
@@ -50,7 +52,9 @@ export default function SimpleCard({ data, shape }) {
         <SimpleCardTitle shape={shape}>{data.title}</SimpleCardTitle>
         <SimpleCardInfo shape={shape}>
           {shape === "list" ? <Ranking>001</Ranking> : null}
-          <SimpleCardCreatedDate>1 min ago</SimpleCardCreatedDate>
+          <SimpleCardCreatedDate>
+            {convertDateForm(data.time)}
+          </SimpleCardCreatedDate>
         </SimpleCardInfo>
       </div>
     </SimpleCardWrap>

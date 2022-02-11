@@ -11,7 +11,6 @@ export default function CommentModalContainer({
   const [commentsData, setCommentsData] = useState(null);
 
   useEffect(() => {
-    console.log("itemData", itemData);
     function fetchComments(data) {
       if (!data.kids) {
         return data;
@@ -36,11 +35,15 @@ export default function CommentModalContainer({
     itemData && fetchData();
   }, [itemData]);
 
+  function close() {
+    closeModal();
+    setCommentsData(null);
+  }
   return (
     <CommentModal
       itemData={itemData}
       commentsData={commentsData}
-      closeModal={closeModal}
+      closeModal={close}
       openModal={openModal}
     />
   );

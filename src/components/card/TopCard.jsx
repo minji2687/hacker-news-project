@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { convertDateForm } from "../../util";
 import { Title, CardWrap, CreatedDate } from "./Card";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 
@@ -64,7 +65,7 @@ export default function TopCard({ data, ranking, clickModal }) {
     <TopCardWrap>
       <BackgroundNum>{ranking}</BackgroundNum>
       <CardInfo>
-        <TopCreatedDate>1 min ago</TopCreatedDate>
+        <TopCreatedDate>{convertDateForm(data.time)}</TopCreatedDate>
         <TopTitle>{data.title}</TopTitle>
         <CardAdditionalInfo
           data={data}

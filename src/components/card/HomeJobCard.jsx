@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { convertDateForm } from "../../util";
 
 import {
   SimpleCardWrap,
@@ -24,7 +25,7 @@ const JobsURl = styled.div`
   line-height: 135%;
 `;
 
-const HomeJobCardCreatedDate = styled(SimpleCardCreatedDate)`
+const HomeJobCardInfo = styled(SimpleCardInfo)`
   justify-content: start;
 `;
 
@@ -37,9 +38,11 @@ export default function HomeJobCard({ data }) {
 
       <div>
         <SimpleCardTitle shape="list">{data.title}</SimpleCardTitle>
-        <SimpleCardInfo shape="list">
-          <HomeJobCardCreatedDate>1 min ago</HomeJobCardCreatedDate>
-        </SimpleCardInfo>
+        <HomeJobCardInfo shape="list">
+          <SimpleCardCreatedDate>
+            {convertDateForm(data.time)}
+          </SimpleCardCreatedDate>
+        </HomeJobCardInfo>
       </div>
     </HomeSimpleCardWrap>
   );

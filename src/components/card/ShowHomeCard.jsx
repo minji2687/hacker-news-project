@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import CardAdditionalInfo from "./CardAdditionalInfo";
 import { CardDoc, Title, CreatedDate } from "./Card";
 import profile from "../../assets/profile.svg";
-import { newCardProfileImg } from "../../util";
+import { convertDateForm, newCardProfileImg } from "../../util";
 
 import {
   ShowCardWrap,
@@ -51,7 +51,7 @@ const UserProfile = styled.span`
 export default function ShowHomeCard({ data, clickModal }) {
   return (
     <ShowHomeCardWrap>
-      <ShowHomeCreatedDate>3 min ago</ShowHomeCreatedDate>
+      <ShowHomeCreatedDate>{convertDateForm(data.time)}</ShowHomeCreatedDate>
       <ShowHomeTitle>{data.title}</ShowHomeTitle>
       <ShowHomeUserInfo>
         <UserProfile userProfileImg={newCardProfileImg()}></UserProfile>
