@@ -10,6 +10,7 @@ import raindear from "./assets/rankerBackground/raindear.svg";
 import profileBear from "./assets/newCardProfile/bear.svg";
 import profileCat from "./assets/newCardProfile/cat.svg";
 import profileElephant from "./assets/newCardProfile/elephant.svg";
+import profilelion from "./assets/newCardProfile/lion.svg";
 import profileFox from "./assets/newCardProfile/fox.svg";
 import profileMonkey from "./assets/newCardProfile/monkey.svg";
 import profileRabbit from "./assets/newCardProfile/rabbit.svg";
@@ -47,6 +48,7 @@ const newCardProfile = [
   profileMonkey,
   profileRabbit,
   profileRaindear,
+  profilelion,
 ];
 
 export function newCardProfileImg() {
@@ -87,8 +89,8 @@ export function convertDateForm(timeStamp) {
   } else if (nowHours > itemHours) {
     return `${nowHours - itemHours} hours ago`;
   } else if (nowMinutes > itemMinutes) {
-    return `${nowMinutes - itemMinutes} minutes ago`;
+    return `${nowMinutes - itemMinutes} min ago`;
   } else if (nowSeconds > itemSeconds) {
-    return `${nowSeconds - itemSeconds} seconds ago`;
+    return `${nowSeconds - itemSeconds} sec ago`;
   }
 }

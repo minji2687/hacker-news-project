@@ -5,14 +5,28 @@ import newsMainBanner from "../assets/newsMainBanner.svg";
 import MainBanner from "./MainBanner";
 import MainContentWrap from "./MainContentWrap";
 import { CardList } from "./CardList";
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { getNewsSagaStart } from "../redux/modules/news";
+import CommentModalContainer from "../containers/CommentModalContainer";
 
 const ObserverEl = styled.div``;
 
 export default function News({ newsData }) {
+  // 모달 로직
+  const [modalData, setModalData] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
+  function clickModal(data) {
+    setModalData(data);
+    setOpenModal(true);
+  }
+
+  function closeModal() {
+    setOpenModal(false);
+  }
+
+  // 무한 스크롤 로직
   const ObserverRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -34,11 +48,21 @@ export default function News({ newsData }) {
       <MainBanner background={newsMainBanner} />
       <SubTitle>TOP 10</SubTitle>
       <CardList>
-        {newsData.map((item) => (
-          <Card data={item.data} key={item.data.id} />
+        {newsData.map((item, index) => (
+          <Card
+            data={item.data}
+            ranking={index + 1}
+            key={item.data.id}
+            clickModal={clickModal}
+          />
         ))}
         <ObserverEl ref={ObserverRef} />
       </CardList>
+      <CommentModalContainer
+        itemData={modalData}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
     </MainContentWrap>
   );
 }

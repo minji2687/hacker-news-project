@@ -48,7 +48,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        showData: action.showData,
+        showData: [...state.showData, ...action.showData],
       };
 
     case GET_SHOW_FAIL:

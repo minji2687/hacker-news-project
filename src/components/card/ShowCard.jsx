@@ -4,6 +4,7 @@ import profile from "../../assets/profile.svg";
 
 import { UserInfo, UserName } from "../Comment";
 import { AdditionalInfo, PointNum, CommentNum } from "./CardAdditionalInfo";
+import { newCardProfileImg } from "../../util";
 
 export const ShowCardWrap = styled(CardWrap)`
   height: 106px;
@@ -58,7 +59,7 @@ export default function ShowCard({ data, clickModal }) {
     <ShowCardWrap>
       <ShowCardInfo>
         <ShowUserInfo>
-          <img src={profile} alt="profile" />
+          <img src={newCardProfileImg()} alt="profile" />
           <ShowUserName>{data.by}</ShowUserName>
         </ShowUserInfo>
       </ShowCardInfo>

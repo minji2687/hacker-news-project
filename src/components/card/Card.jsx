@@ -30,7 +30,7 @@ export const Ranking = styled.span`
 `;
 
 export const Writer = styled.strong`
-  margin-top: 3px;
+  margin-top: 7px;
   font-weight: 500;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.6);
@@ -39,7 +39,7 @@ export const Writer = styled.strong`
 export const CreatedDate = styled.span`
   color: #2a6b25;
   font-size: 13px;
-  margin-top: 3px;
+  margin-top: 7px;
 `;
 
 export const CardDoc = styled.div`
@@ -63,11 +63,11 @@ export const Title = styled.h3`
   text-overflow: ellipsis;
 `;
 
-export default function Card({ data }) {
+export default function Card({ data, ranking, clickModal }) {
   return (
     <CardWrap>
       <CardInfo>
-        <Ranking>1</Ranking>
+        <Ranking>{ranking}</Ranking>
         <Writer>{data.by}</Writer>
         <CreatedDate>{convertDateForm(data.time)}</CreatedDate>
       </CardInfo>
@@ -78,8 +78,10 @@ export default function Card({ data }) {
           </Link>
         </Title>
         <CardAdditionalInfo
+          data={data}
           scoreNum={data.score}
           commentNum={data.descendants}
+          clickModal={clickModal}
         />
       </CardDoc>
     </CardWrap>
