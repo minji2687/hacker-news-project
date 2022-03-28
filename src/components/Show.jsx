@@ -4,8 +4,11 @@ import MainBanner from "./MainBanner";
 import ShowMainBanner from "../assets/showMainBanner.svg";
 import { CardList } from "./CardList";
 import CommentModalContainer from "../containers/CommentModalContainer";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import MiddleBigCard from "./card/MiddleBigCard";
+import { useDispatch } from "react-redux";
+import { getShowSagaStart } from "../redux/modules/show";
+import styled from "@emotion/styled";
 
 export default function Show({ showData }) {
   const [modalData, setModalData] = useState(null);
@@ -19,6 +22,22 @@ export default function Show({ showData }) {
   function closeModal() {
     setOpenModal(false);
   }
+
+  const ObserverRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const options = {
+    threshold: 1.0,
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entry, observer) => {
+      if (entry[0].intersectionRatio > 0) {
+        dispatch(getShowSagaStart());
+      }
+    }, options);
+    observer.observe(ObserverRef.current);
+  }, []);
 
   return (
     <MainContentWrap>
@@ -42,6 +61,7 @@ export default function Show({ showData }) {
             />
           );
         })}
+        <ObserverEl ref={ObserverRef} />
       </CardList>
 
       <CommentModalContainer
@@ -52,3 +72,5 @@ export default function Show({ showData }) {
     </MainContentWrap>
   );
 }
+
+const ObserverEl = styled.div``;

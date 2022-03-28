@@ -52,7 +52,7 @@ export default function News({ newsData }) {
           <Card
             data={item.data}
             ranking={index + 1}
-            key={item.data.id}
+            key={`NEWS-${item.data.id}`}
             clickModal={clickModal}
           />
         ))}

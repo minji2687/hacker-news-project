@@ -64,8 +64,8 @@ export default function reducer(state = initialState, action) {
 }
 
 //saga
-
 const GET_SHOW_SAGA_START = "GET_SHOW_SAGA_START";
+let startNum = 0;
 
 function* getShowSaga(action) {
   try {
@@ -76,7 +76,6 @@ function* getShowSaga(action) {
       "https://hacker-news.firebaseio.com/v0/showstories.json"
     );
 
-    let startNum = 0;
     const itemNum = 10;
 
     let sliceResData = res.data.slice(startNum, startNum + itemNum);

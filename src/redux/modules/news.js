@@ -78,11 +78,9 @@ function* getNewsSaga(action) {
     );
 
     const itemNum = 10;
-    console.log(startNum, itemNum);
 
     let sliceResData = res.data.slice(startNum, startNum + itemNum);
 
-    console.log(sliceResData);
     startNum += itemNum;
 
     const promiseArr = yield requestItems(sliceResData);
